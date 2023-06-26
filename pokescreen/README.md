@@ -1,5 +1,5 @@
 <h1 align = "center">
-	<img src="https://www.svgrepo.com/show/153/superheroe.svg" alt='' width='30px' height='30px'/>
+	<img src="https://www.svgrepo.com/show/153/superheroe.svg" alt='' width='40px' height='40px'/>
 	Marvel Screen
 </h1>
 
