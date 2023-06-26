@@ -1,16 +1,16 @@
 import { useContext, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { PokemonContext } from "../../contexts/pokemonContext";
+import { MarvelContext } from "../../contexts/marvelContext";
 import {
-  ContainerPokeName,
-  ContainerPokeItem,
+  ContainermarvelName,
+  ContainermarvelItem,
   ContainerAbilities,
 } from "./style";
 import { ContainerButton } from "../Buttons/style";
 
-const PokeItem = () => {
+const MarvelItem = () => {
   const navigate = useNavigate();
-  const { getMarvelDetail, marvelItem } = useContext(PokemonContext);
+  const { getMarvelDetail, marvelItem } = useContext(MarvelContext);
   const { name } = useParams();
 
   useEffect(() => {
@@ -21,10 +21,10 @@ const PokeItem = () => {
 
   return (
     <>
-      <ContainerPokeName>
+      <ContainermarvelName>
         <p>{marvelItem?.name}</p>
-      </ContainerPokeName>
-      <ContainerPokeItem>
+      </ContainermarvelName>
+      <ContainermarvelItem>
         <img
           src={
             marvelItem?.thumbnail?.path + "." + marvelItem?.thumbnail?.extension
@@ -46,13 +46,13 @@ const PokeItem = () => {
             {/* <span> {marvelItem.weight}</span> */}
           </div>
         </ContainerAbilities>
-      </ContainerPokeItem>
+      </ContainermarvelItem>
       <ContainerButton>
         <button
           onClick={() => {
             navigate("/");
           }}
-          className="pokeItemButton"
+          className="marvelItemButton"
         >
           Voltar ao inicio
         </button>
@@ -61,4 +61,4 @@ const PokeItem = () => {
   );
 };
 
-export default PokeItem;
+export default MarvelItem;

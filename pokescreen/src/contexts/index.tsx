@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
-import { PokemonProvider } from "./pokemonContext";
+import { MarvelProvider } from "./marvelContext";
 
 interface ProvidersProps {
   children: ReactNode;
 }
 
 export const Providers = ({ children }: ProvidersProps) => {
-  return <PokemonProvider>{children}</PokemonProvider>;
+  return <MarvelProvider>{children}</MarvelProvider>;
 };

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerPokeName = styled.div`
+export const ContainermarvelName = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +23,7 @@ export const ContainerPokeName = styled.div`
   }
 `;
 
-export const ContainerPokeItem = styled.div`
+export const ContainermarvelItem = styled.div`
   display: flex;
   padding: 3rem;
   align-items: center;

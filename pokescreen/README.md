@@ -13,13 +13,13 @@
 	Figma
 </h3>
 
-### [`Figma`](https://www.figma.com/file/WYsQclXV1S05fQgCDm49T1/Pokemon?node-id=0%3A1&t=bmHM0gX8gZA2RYR1-1)
+### [`Figma`](https://www.figma.com/file/WYsQclXV1S05fQgCDm49T1/marvelmon?node-id=0%3A1&t=bmHM0gX8gZA2RYR1-1)
 
 <h3 align = "center">
 	Deploy
 </h3>
 
-### [`PokePage`](https://pokescreen.vercel.app/)
+### [`MarvelPage`](https://marvelscreen.vercel.app/)
 
 #
 
@@ -27,10 +27,10 @@
 	Rotas
 </h3>
 
-`Ao clicar na logo pokebola, você retornará sempre a tela inicial`
+`Ao clicar na logo, você retornará sempre a tela inicial`
 
 - `/ - Dashboard Screen`
-- `/pokepage - Marvel Screen`
+- `/marvelpage - Marvel Screen`
 
 #
 

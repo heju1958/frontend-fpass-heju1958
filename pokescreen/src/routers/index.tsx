@@ -1,13 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 
-import PokePage from "../pages/PokePage";
+import MarvelPage from "../pages/MarvelPage";
 import Dashboard from "../pages/Dashboard";
 
 const RoutesMain = () => {
   return (
     <Routes>
       <Route path="/" element={<Dashboard />} />
-      <Route path="/pokepage/:name" element={<PokePage />} />
+      <Route path="/marvelpage/:name" element={<MarvelPage />} />
     </Routes>
   );
 };

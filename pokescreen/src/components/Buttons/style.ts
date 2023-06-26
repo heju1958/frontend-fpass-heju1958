@@ -22,7 +22,7 @@ export const ContainerButton = styled.div`
     background-color: var(--red-1);
   }
 
-  .pokeItemButton {
+  .marvelItemButton {
     width: 10rem;
     height: 3rem;
     border-radius: 1rem;

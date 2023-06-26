@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
-import { PokemonContext } from "../../contexts/pokemonContext";
+import { MarvelContext } from "../../contexts/marvelContext";
 
 import { ContainerHeader, ContainerSearch } from "./style";
 import searchIcon from "../../assets/search.svg";
 
 const Header = () => {
   const [search, setSearch] = useState("");
-  const { getMarvel } = useContext(PokemonContext);
+  const { getMarvel } = useContext(MarvelContext);
 
   return (
     <ContainerHeader>

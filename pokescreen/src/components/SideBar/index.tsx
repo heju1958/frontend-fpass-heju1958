@@ -1,6 +1,4 @@
 import { ContainerSideBar } from "./style";
-import pokeLogo from "../../assets/pokelogo.svg";
-import pokeBall from "../../assets/pokeball.svg";
 
 import { useNavigate } from "react-router-dom";
 
@@ -10,14 +8,14 @@ const SideBar = () => {
   return (
     <ContainerSideBar>
       <img
-        src={pokeBall}
-        alt="poke logo"
+        src={""}
+        alt="marvel logo"
         onClick={() => {
           navigate("/");
           window.location.reload();
         }}
       />
-      <img src={pokeLogo} alt="poke logo" />
+      <img src={""} alt="marvel logo" />
     </ContainerSideBar>
   );
 };

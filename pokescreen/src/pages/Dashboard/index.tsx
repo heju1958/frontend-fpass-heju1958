@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import PokeCard from "../../components/PokeCard";
+import MarvelCard from "../../components/MarvelCard";
 import Header from "../../components/Header";
 import Buttons from "../../components/Buttons";
 import SideBar from "../../components/SideBar";
@@ -16,7 +16,7 @@ const Dashboard = () => {
         <SideBar />
         <BoxDashboard>
           <Header />
-          <PokeCard />
+          <MarvelCard />
           <Buttons />
         </BoxDashboard>
       </ContainerDashboard>

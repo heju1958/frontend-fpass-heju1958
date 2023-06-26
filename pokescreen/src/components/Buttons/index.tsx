@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import { PokemonContext } from "../../contexts/pokemonContext";
+import { MarvelContext } from "../../contexts/marvelContext";
 
 import { ContainerButton } from "./style";
 import next from "../../assets/next.svg";
 import previous from "../../assets/previous.svg";
 
 const Buttons = () => {
-  const { nextPage, previousPage } = useContext(PokemonContext);
+  const { nextPage, previousPage } = useContext(MarvelContext);
 
   return (
     <ContainerButton>

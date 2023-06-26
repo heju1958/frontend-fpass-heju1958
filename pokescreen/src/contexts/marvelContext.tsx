@@ -2,23 +2,24 @@ import api from "../api";
 
 import { createContext, useState } from "react";
 
-import { IPoke, IPokemonContext, IPokemonProps } from "../interfaces";
-export const PokemonContext = createContext<IPokemonContext>(
-  {} as IPokemonContext
+import { IMarvel, IMarvelContext, IMarvelProps } from "../interfaces";
+
+export const MarvelContext = createContext<IMarvelContext>(
+  {} as IMarvelContext
 );
 
-export const PokemonProvider = ({ children }: IPokemonProps) => {
-  const [marvel, setMarvel] = useState<IPoke | undefined>();
-  const [marvelItem, setMarvelItem] = useState<IPoke>({} as IPoke);
-  const [marvelListData, setPokeListData] = useState<IPoke[] | unknown[]>(
-    [] as IPoke[]
+export const MarvelProvider = ({ children }: IMarvelProps) => {
+  const [marvel, setMarvel] = useState<IMarvel | undefined>();
+  const [marvelItem, setMarvelItem] = useState<IMarvel>({} as IMarvel);
+  const [marvelListData, setMarvelListData] = useState<IMarvel[] | unknown[]>(
+    [] as IMarvel[]
   );
 
   // marvel heros
 
   const getMarvelData = async () => {
     return await api.get("").then((res) => {
-      setPokeListData(res.data.data.results);
+      setMarvelListData(res.data.data.results);
     });
   };
 
@@ -45,7 +46,7 @@ export const PokemonProvider = ({ children }: IPokemonProps) => {
           offset: offset,
         },
       });
-      setPokeListData(res.data.data.results);
+      setMarvelListData(res.data.data.results);
       setOffset(offset - 6);
     }
   };
@@ -56,12 +57,12 @@ export const PokemonProvider = ({ children }: IPokemonProps) => {
         offset: offset,
       },
     });
-    setPokeListData(res.data.data.results);
+    setMarvelListData(res.data.data.results);
     setOffset(offset + 6);
   };
 
   return (
-    <PokemonContext.Provider
+    <MarvelContext.Provider
       value={{
         marvel,
         marvelItem,
@@ -75,6 +76,6 @@ export const PokemonProvider = ({ children }: IPokemonProps) => {
       }}
     >
       {children}
-    </PokemonContext.Provider>
+    </MarvelContext.Provider>
   );
 };

@@ -1,11 +1,11 @@
 import { useContext, useEffect } from "react";
-import { PokemonContext } from "../../contexts/pokemonContext";
+import { MarvelContext } from "../../contexts/marvelContext";
 import { useNavigate } from "react-router-dom";
 import { ContainerCard } from "./style";
 
-const PokeCard = () => {
+const MarvelCard = () => {
   const { marvelListData, marvel, getMarvelData, setMarvelItem } =
-    useContext(PokemonContext);
+    useContext(MarvelContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,13 +24,13 @@ const PokeCard = () => {
             key={marvel.id}
             onClick={() => {
               setMarvelItem(marvel);
-              navigate(`/pokepage/${marvel.name}`);
+              navigate(`/marvelpage/${marvel.name}`);
             }}
           >
             <div>
               <img
                 src={marvel.thumbnail.path + "." + marvel.thumbnail.extension}
-                alt="poke image"
+                alt="marvel hero image"
               />
               <p>{marvel.name}</p>
             </div>
@@ -42,7 +42,7 @@ const PokeCard = () => {
                 key={marvel.id}
                 onClick={() => {
                   setMarvelItem(marvel);
-                  navigate(`/pokepage/${marvel.name}`);
+                  navigate(`/marvelpage/${marvel.name}`);
                 }}
               >
                 <div>
@@ -63,4 +63,4 @@ const PokeCard = () => {
   );
 };
 
-export default PokeCard;
+export default MarvelCard;

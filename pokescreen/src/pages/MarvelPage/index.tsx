@@ -1,9 +1,9 @@
-import PokeItem from "../../components/PokeItem";
+import MarvelItem from "../../components/MarvelItem";
 import SideBar from "../../components/SideBar";
 import { ContainerDashboard, BoxDashboard } from "../Dashboard/style";
 import { motion } from "framer-motion";
 
-const PokePage = () => {
+const MarvelPage = () => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -13,11 +13,11 @@ const PokePage = () => {
       <ContainerDashboard>
         <SideBar />
         <BoxDashboard>
-          <PokeItem />
+          <MarvelItem />
         </BoxDashboard>
       </ContainerDashboard>
     </motion.div>
   );
 };
 
-export default PokePage;
+export default MarvelPage;

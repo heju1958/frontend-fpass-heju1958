@@ -1,26 +1,24 @@
-import { AxiosHeaders } from "axios";
 import { ReactNode, SetStateAction } from "react";
 
-export interface IPokemonContext {
-  marvel: IPoke | undefined;
-  marvelItem: IPoke;
-  marvelListData: IPoke[] | unknown[];
+export interface IMarvelContext {
+  marvel: IMarvel | undefined;
+  marvelItem: IMarvel;
+  marvelListData: IMarvel[] | unknown[];
   nextPage: () => void;
   previousPage: () => void;
   getMarvel: (input: string) => void;
   getMarvelData: () => void;
-  setMarvelItem: React.Dispatch<SetStateAction<IPoke>>;
+  setMarvelItem: React.Dispatch<SetStateAction<IMarvel>>;
   getMarvelDetail: (name: string) => Promise<void>;
 }
 
-export interface IPokemonProps {
+export interface IMarvelProps {
   children: ReactNode;
 }
 
-export interface IPoke {
+export interface IMarvel {
   id: number;
   name: string;
-  next: string;
   previous: string;
   thumbnail: {
     extension: string;
@@ -29,28 +27,5 @@ export interface IPoke {
 }
 
 export interface IRes {
-  data: IPoke;
-}
-
-export interface IAbility {
-  ability: {
-    name: string;
-    url: string;
-  };
-  slot: number;
-  is_hidden: boolean;
-}
-
-export interface IEndpoint {
-  name: string;
-  url: string;
-}
-
-export interface IObj {
-  data: {};
-  status: number;
-  statusText: string;
-  headers: AxiosHeaders;
-  config: {};
-  request: XMLHttpRequest;
+  data: IMarvel;
 }
