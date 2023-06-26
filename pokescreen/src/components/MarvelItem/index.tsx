@@ -2,8 +2,8 @@ import { useContext, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { MarvelContext } from "../../contexts/marvelContext";
 import {
-  ContainermarvelName,
-  ContainermarvelItem,
+  ContainerMarvelName,
+  ContainerMarvelItem,
   ContainerAbilities,
 } from "./style";
 import { ContainerButton } from "../Buttons/style";
@@ -21,10 +21,10 @@ const MarvelItem = () => {
 
   return (
     <>
-      <ContainermarvelName>
+      <ContainerMarvelName>
         <p>{marvelItem?.name}</p>
-      </ContainermarvelName>
-      <ContainermarvelItem>
+      </ContainerMarvelName>
+      <ContainerMarvelItem>
         <img
           src={
             marvelItem?.thumbnail?.path + "." + marvelItem?.thumbnail?.extension
@@ -46,7 +46,7 @@ const MarvelItem = () => {
             {/* <span> {marvelItem.weight}</span> */}
           </div>
         </ContainerAbilities>
-      </ContainermarvelItem>
+      </ContainerMarvelItem>
       <ContainerButton>
         <button
           onClick={() => {

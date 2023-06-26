@@ -13,13 +13,13 @@
 	Figma
 </h3>
 
-### [`Figma`](https://www.figma.com/file/WYsQclXV1S05fQgCDm49T1/marvelmon?node-id=0%3A1&t=bmHM0gX8gZA2RYR1-1)
+### [`Figma`](https://www.figma.com/file/WYsQclXV1S05fQgCDm49T1/pokemon?node-id=0%3A1&t=bmHM0gX8gZA2RYR1-1)
 
 <h3 align = "center">
 	Deploy
 </h3>
 
-### [`MarvelPage`](https://marvelscreen.vercel.app/)
+### [`MarvelPage`](https://pokescreen.vercel.app/)
 
 #
 
