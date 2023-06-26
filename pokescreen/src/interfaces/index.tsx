@@ -2,17 +2,15 @@ import { AxiosHeaders } from "axios";
 import { ReactNode, SetStateAction } from "react";
 
 export interface IPokemonContext {
-  pokeList: IPoke[];
-  pokemons: IPoke | undefined;
-  pokeItem: IPoke;
-  pokeListData: IPoke[] | unknown[];
-  getPokemon: (input: string) => Promise<void>;
-  getPokemonsData: (list: IEndpoint[]) => void;
-  currentPageFunction: () => void;
+  marvel: IPoke | undefined;
+  marvelItem: IPoke;
+  marvelListData: IPoke[] | unknown[];
   nextPage: () => void;
   previousPage: () => void;
-  getPokeDetail: (name: string) => Promise<void>;
-  setPokeItem: React.Dispatch<SetStateAction<IPoke>>;
+  getMarvel: (input: string) => void;
+  getMarvelData: () => void;
+  setMarvelItem: React.Dispatch<SetStateAction<IPoke>>;
+  getMarvelDetail: (name: string) => Promise<void>;
 }
 
 export interface IPokemonProps {
@@ -22,14 +20,12 @@ export interface IPokemonProps {
 export interface IPoke {
   id: number;
   name: string;
-  abilities: IAbility[];
-  sprites: {
-    front_default: string;
-  };
-  weight: number;
   next: string;
   previous: string;
-  url: string;
+  thumbnail: {
+    extension: string;
+    path: string;
+  };
 }
 
 export interface IRes {

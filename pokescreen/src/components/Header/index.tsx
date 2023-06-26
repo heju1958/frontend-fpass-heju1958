@@ -6,7 +6,7 @@ import searchIcon from "../../assets/search.svg";
 
 const Header = () => {
   const [search, setSearch] = useState("");
-  const { getPokemon } = useContext(PokemonContext);
+  const { getMarvel } = useContext(PokemonContext);
 
   return (
     <ContainerHeader>
@@ -14,9 +14,9 @@ const Header = () => {
         <input
           onChange={(event) => setSearch(event.target.value)}
           type="text"
-          placeholder="Pesquise seu pokémon"
+          placeholder="Pesquise seu herói"
         />
-        <button onClick={() => getPokemon(search)}>
+        <button onClick={() => getMarvel(search)}>
           <img src={searchIcon} alt="search icon" />
         </button>
       </ContainerSearch>

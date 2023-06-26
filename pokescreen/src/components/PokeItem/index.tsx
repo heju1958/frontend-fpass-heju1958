@@ -10,35 +10,40 @@ import { ContainerButton } from "../Buttons/style";
 
 const PokeItem = () => {
   const navigate = useNavigate();
-  const { pokemons, getPokeDetail, pokeItem } = useContext(PokemonContext);
+  const { getMarvelDetail, marvelItem } = useContext(PokemonContext);
   const { name } = useParams();
 
   useEffect(() => {
     if (name) {
-      getPokeDetail(name);
+      getMarvelDetail(name);
     }
-  }, [pokemons]);
+  }, []);
 
   return (
     <>
       <ContainerPokeName>
-        <p>{pokeItem?.name}</p>
+        <p>{marvelItem?.name}</p>
       </ContainerPokeName>
       <ContainerPokeItem>
-        <img src={pokeItem?.sprites?.front_default} alt="" />
+        <img
+          src={
+            marvelItem?.thumbnail?.path + "." + marvelItem?.thumbnail?.extension
+          }
+          alt=""
+        />
         <ContainerAbilities>
           <p>Abilities</p>
-          {pokeItem?.abilities?.map((elem, index) => {
+          {/* {marvelItem?.abilities?.map((elem, index) => {
             return (
               <div key={index}>
                 <p>{elem?.ability?.name}</p>
                 <span>slot {elem?.slot}</span>
               </div>
             );
-          })}
+          })} */}
           <div>
             <p>weight</p>
-            <span> {pokeItem.weight}</span>
+            {/* <span> {marvelItem.weight}</span> */}
           </div>
         </ContainerAbilities>
       </ContainerPokeItem>

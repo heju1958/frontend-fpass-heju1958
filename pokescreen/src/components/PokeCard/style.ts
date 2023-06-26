@@ -13,6 +13,9 @@ export const ContainerCard = styled.ul`
   padding: 1rem;
 
   li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 10px;
     width: 20rem;
     height: 16rem;
@@ -22,10 +25,11 @@ export const ContainerCard = styled.ul`
     img {
       width: 12rem;
       height: 12rem;
+      border-radius: 50%;
     }
     p {
       color: var(--red-0);
-      font-size: 1.5rem;
+      font-size: 1.3rem;
     }
 
     @media (max-width: 1300px) {

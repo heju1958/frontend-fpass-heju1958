@@ -1,13 +1,13 @@
 <h1 align = "center">
-	<img src="https://www.svgrepo.com/show/276264/pokeball-pokemon.svg" alt='' width='30px' height='30px'/>
-	PokeScreen
+	<img src="https://www.svgrepo.com/svg/163366/superheroe.svg" alt='' width='30px' height='30px'/>
+	Marvel Screen
 </h1>
 
 <h3 align = "center">
 	API
 </h3>
 
-### [`API Pokémon`](https://pokeapi.co/docs/v2)
+### [`API Marvel`](https://developer.marvel.com/documentation/getting_started)
 
 <h3 align = "center">
 	Figma
@@ -30,7 +30,7 @@
 `Ao clicar na logo pokebola, você retornará sempre a tela inicial`
 
 - `/ - Dashboard Screen`
-- `/pokepage - Pokemon Screen`
+- `/pokepage - Marvel Screen`
 
 #
 

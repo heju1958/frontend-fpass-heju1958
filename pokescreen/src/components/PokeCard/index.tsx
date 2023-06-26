@@ -4,47 +4,55 @@ import { useNavigate } from "react-router-dom";
 import { ContainerCard } from "./style";
 
 const PokeCard = () => {
-  const { pokeList, setPokeItem, getPokemonsData, pokeListData, pokemons } =
+  const { marvelListData, marvel, getMarvelData, setMarvelItem } =
     useContext(PokemonContext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    getPokemonsData(pokeList);
-  }, [pokeList]);
+    getMarvelData();
+  }, []);
 
-  if (pokeList.length === 0) {
-    return <h1>carregando</h1>;
+  if (marvelListData.length === 0) {
+    return <h1>loading</h1>;
   }
 
   return (
     <>
       <ContainerCard>
-        {pokemons ? (
+        {marvel ? (
           <li
-            key={pokemons.id}
+            key={marvel.id}
             onClick={() => {
-              setPokeItem(pokemons);
-              navigate(`/pokepage/${pokemons.name}`);
+              setMarvelItem(marvel);
+              navigate(`/pokepage/${marvel.name}`);
             }}
           >
             <div>
-              <img src={pokemons.sprites.front_default} alt="poke image" />
-              <p>{pokemons.name}</p>
+              <img
+                src={marvel.thumbnail.path + "." + marvel.thumbnail.extension}
+                alt="poke image"
+              />
+              <p>{marvel.name}</p>
             </div>
           </li>
         ) : (
-          pokeListData?.map((poke: any) => {
+          marvelListData?.map((marvel: any) => {
             return (
               <li
-                key={poke.data.id}
+                key={marvel.id}
                 onClick={() => {
-                  setPokeItem(poke.data);
-                  navigate(`/pokepage/${poke.data.name}`);
+                  setMarvelItem(marvel);
+                  navigate(`/pokepage/${marvel.name}`);
                 }}
               >
                 <div>
-                  <img src={poke.data.sprites.front_default} alt="" />
-                  <p>{poke.data.name}</p>
+                  <img
+                    src={
+                      marvel.thumbnail.path + "." + marvel.thumbnail.extension
+                    }
+                    alt="marvel hero image"
+                  />
+                  <p>{marvel.name}</p>
                 </div>
               </li>
             );

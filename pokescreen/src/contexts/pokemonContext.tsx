@@ -1,101 +1,77 @@
-import axios from "axios";
 import api from "../api";
 
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 
-import {
-  IPoke,
-  IPokemonContext,
-  IPokemonProps,
-  IEndpoint,
-} from "../interfaces";
+import { IPoke, IPokemonContext, IPokemonProps } from "../interfaces";
 export const PokemonContext = createContext<IPokemonContext>(
   {} as IPokemonContext
 );
 
 export const PokemonProvider = ({ children }: IPokemonProps) => {
-  const [obj, setObj] = useState<any>();
-  const [pokemons, setPokemons] = useState<IPoke | undefined>();
-  const [pokeItem, setPokeItem] = useState<IPoke>({} as IPoke);
-  const [pokeList, setPokeList] = useState<IPoke[]>([] as IPoke[]);
-  const [pokeListData, setPokeListData] = useState<IPoke[] | unknown[]>(
+  const [marvel, setMarvel] = useState<IPoke | undefined>();
+  const [marvelItem, setMarvelItem] = useState<IPoke>({} as IPoke);
+  const [marvelListData, setPokeListData] = useState<IPoke[] | unknown[]>(
     [] as IPoke[]
   );
 
-  //pagination
+  // marvel heros
 
-  const [currentPage, setCurrentPage] = useState(
-    "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=6"
-  );
-
-  useEffect(() => {
-    currentPageFunction();
-  }, []);
-
-  const currentPageFunction = async () => {
-    await axios
-      .get(currentPage)
-      .then((res) => {
-        setObj(res);
-        setPokeList(res.data.results);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  const nextPage = () => {
-    changePages(obj.data.next);
-  };
-
-  const previousPage = () => {
-    changePages(obj.data.previous);
-  };
-
-  const changePages = async (url: string) => {
-    await axios.get(url).then((res) => {
-      setObj(res);
-      setPokeList(res.data.results);
+  const getMarvelData = async () => {
+    return await api.get("").then((res) => {
+      setPokeListData(res.data.data.results);
     });
   };
 
-  //find pokemons
-
-  const getPokemonsData = (list: IEndpoint[]) => {
-    const endpoints = list.map((elem) => {
-      return api.get(`/${elem.name}`);
-    });
-    axios.all(endpoints).then(
-      axios.spread((...res) => {
-        setPokeListData(res);
-      })
-    );
-  };
-
-  const getPokemon = async (input: string) => {
-    await api.get(`/${input.toLowerCase()}`).then((res) => {
-      setPokemons(res.data);
+  const getMarvel = async (input: string) => {
+    return await api.get(`/${input.toLowerCase()}`).then((res) => {
+      setMarvel(res.data.data.results);
     });
   };
 
-  const getPokeDetail = async (name: string) => {
+  const getMarvelDetail = async (name: string) => {
     return await api.get(`/${name}`).then((res) => {
-      setPokeItem(res.data);
+      setMarvelItem(res.data.data.results);
     });
+  };
+
+  // pagination
+
+  const [offset, setOffset] = useState(0);
+
+  const previousPage = async () => {
+    if (offset > 0) {
+      const res = await api.get("", {
+        params: {
+          offset: offset,
+        },
+      });
+      setPokeListData(res.data.data.results);
+      setOffset(offset - 6);
+    }
+  };
+
+  const nextPage = async () => {
+    const res = await api.get("", {
+      params: {
+        offset: offset,
+      },
+    });
+    setPokeListData(res.data.data.results);
+    setOffset(offset + 6);
   };
 
   return (
     <PokemonContext.Provider
       value={{
-        getPokemon,
-        pokemons,
-        pokeList,
-        pokeItem,
-        setPokeItem,
-        currentPageFunction,
+        marvel,
+        marvelItem,
+        marvelListData,
+        getMarvel,
+        setMarvelItem,
+        getMarvelData,
+        getMarvelDetail,
         nextPage,
         previousPage,
-        getPokemonsData,
-        pokeListData,
-        getPokeDetail,
       }}
     >
       {children}
