@@ -19,7 +19,7 @@
 	Deploy
 </h3>
 
-### [`MarvelPage`](https://pokescreen.vercel.app/)
+### [`MarvelPage`](https://marvelscreen.vercel.app/)
 
 #
 

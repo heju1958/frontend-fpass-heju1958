@@ -11,7 +11,3 @@ function App() {
 }
 
 export default App;
-
-// https://github.com/holding-fpass/challenge-frontend-fpass
-
-// resolver bugs - pagina do personagem - buscar
