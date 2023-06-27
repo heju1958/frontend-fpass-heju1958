@@ -4,20 +4,31 @@ import { MarvelContext } from "../../contexts/marvelContext";
 import {
   ContainerMarvelName,
   ContainerMarvelItem,
-  ContainerAbilities,
+  ContainerApparition,
 } from "./style";
 import { ContainerButton } from "../Buttons/style";
 
 const MarvelItem = () => {
   const navigate = useNavigate();
-  const { getMarvelDetail, marvelItem } = useContext(MarvelContext);
+  const { marvelItem, getMarvelDetail, setMarvelItem } =
+    useContext(MarvelContext);
   const { name } = useParams();
 
   useEffect(() => {
-    if (name) {
+    const storedMarvelItem = localStorage.getItem("marvelItem");
+
+    if (storedMarvelItem) {
+      setMarvelItem(JSON.parse(storedMarvelItem));
+    } else if (name) {
       getMarvelDetail(name);
     }
-  }, []);
+  }, [name]);
+
+  useEffect(() => {
+    if (marvelItem) {
+      localStorage.setItem("marvelItem", JSON.stringify(marvelItem));
+    }
+  }, [marvelItem]);
 
   return (
     <>
@@ -29,23 +40,19 @@ const MarvelItem = () => {
           src={
             marvelItem?.thumbnail?.path + "." + marvelItem?.thumbnail?.extension
           }
-          alt=""
+          alt="image hero"
         />
-        <ContainerAbilities>
-          <p>Abilities</p>
-          {/* {marvelItem?.abilities?.map((elem, index) => {
-            return (
-              <div key={index}>
-                <p>{elem?.ability?.name}</p>
-                <span>slot {elem?.slot}</span>
-              </div>
-            );
-          })} */}
+        <ContainerApparition>
+          <p>Apparition</p>
           <div>
-            <p>weight</p>
-            {/* <span> {marvelItem.weight}</span> */}
+            <p>series</p>
+            <span> {marvelItem?.series?.available}</span>
           </div>
-        </ContainerAbilities>
+          <div>
+            <p>stories</p>
+            <span> {marvelItem?.stories?.available}</span>
+          </div>
+        </ContainerApparition>
       </ContainerMarvelItem>
       <ContainerButton>
         <button

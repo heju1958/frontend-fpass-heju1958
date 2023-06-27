@@ -1,5 +1,7 @@
-import { ContainerSideBar } from "./style";
+import marvelLogo from "../../assets/marvellogo.png";
+import comicsLogo from "../../assets/comicslogo.png";
 
+import { ContainerSideBar } from "./style";
 import { useNavigate } from "react-router-dom";
 
 const SideBar = () => {
@@ -8,14 +10,14 @@ const SideBar = () => {
   return (
     <ContainerSideBar>
       <img
-        src={""}
+        src={marvelLogo}
         alt="marvel logo"
         onClick={() => {
           navigate("/");
           window.location.reload();
         }}
       />
-      <img src={""} alt="marvel logo" />
+      <img src={comicsLogo} alt="comics logo" />
     </ContainerSideBar>
   );
 };

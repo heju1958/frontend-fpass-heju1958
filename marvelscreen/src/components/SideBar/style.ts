@@ -5,7 +5,7 @@ export const ContainerSideBar = styled.div`
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--red-0);
-  width: 7rem;
+  width: 8rem;
   height: 100vh;
   padding: 1rem;
 
@@ -15,13 +15,13 @@ export const ContainerSideBar = styled.div`
     flex-direction: row;
 
     img {
-      width: 5rem;
+      width: 6rem;
     }
   }
 
   @media (max-width: 1300px) {
     img {
-      width: 4rem;
+      width: 5rem;
     }
   }
 `;

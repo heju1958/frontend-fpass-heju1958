@@ -23,9 +23,10 @@ export const ContainerCard = styled.ul`
     cursor: pointer;
 
     img {
-      width: 12rem;
+      object-fit: cover;
+      width: 14rem;
       height: 12rem;
-      border-radius: 50%;
+      border-radius: 10px;
     }
     p {
       color: var(--red-0);
@@ -37,7 +38,7 @@ export const ContainerCard = styled.ul`
       height: 11rem;
 
       img {
-        width: 8rem;
+        width: 9rem;
         height: 8rem;
       }
     }

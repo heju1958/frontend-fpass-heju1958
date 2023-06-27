@@ -1,7 +1,5 @@
 import api from "../api";
-
 import { createContext, useState } from "react";
-
 import { IMarvel, IMarvelContext, IMarvelProps } from "../interfaces";
 
 export const MarvelContext = createContext<IMarvelContext>(
@@ -10,12 +8,11 @@ export const MarvelContext = createContext<IMarvelContext>(
 
 export const MarvelProvider = ({ children }: IMarvelProps) => {
   const [marvel, setMarvel] = useState<IMarvel | undefined>();
-  const [marvelItem, setMarvelItem] = useState<IMarvel>({} as IMarvel);
+  const [marvelItem, setMarvelItem] = useState<IMarvel | null>(null);
   const [marvelListData, setMarvelListData] = useState<IMarvel[] | unknown[]>(
     [] as IMarvel[]
   );
 
-  // marvel heros
 
   const getMarvelData = async () => {
     return await api.get("").then((res) => {
@@ -30,9 +27,8 @@ export const MarvelProvider = ({ children }: IMarvelProps) => {
   };
 
   const getMarvelDetail = async (name: string) => {
-    return await api.get(`/${name}`).then((res) => {
-      setMarvelItem(res.data.data.results);
-    });
+    const res = await api.get(`/${name}`);
+    setMarvelItem(res.data.data.results);
   };
 
   // pagination
@@ -43,7 +39,7 @@ export const MarvelProvider = ({ children }: IMarvelProps) => {
     if (offset > 0) {
       const res = await api.get("", {
         params: {
-          offset: offset,
+          offset: offset - 6,
         },
       });
       setMarvelListData(res.data.data.results);
@@ -54,7 +50,7 @@ export const MarvelProvider = ({ children }: IMarvelProps) => {
   const nextPage = async () => {
     const res = await api.get("", {
       params: {
-        offset: offset,
+        offset: offset + 6,
       },
     });
     setMarvelListData(res.data.data.results);

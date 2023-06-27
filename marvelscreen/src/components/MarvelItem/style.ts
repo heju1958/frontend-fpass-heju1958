@@ -32,6 +32,7 @@ export const ContainerMarvelItem = styled.div`
 
   img {
     width: 30rem;
+    border-radius: 1rem;
   }
   @media (max-width: 900px) {
     flex-direction: column;
@@ -44,10 +45,10 @@ export const ContainerMarvelItem = styled.div`
   }
 `;
 
-export const ContainerAbilities = styled.div`
+export const ContainerApparition = styled.div`
   background-color: var(--red-0);
   width: 22rem;
-  height: 26rem;
+  height: 22rem;
   border-radius: 1rem;
   padding: 2rem;
   text-align: center;

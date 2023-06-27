@@ -2,13 +2,13 @@ import { ReactNode, SetStateAction } from "react";
 
 export interface IMarvelContext {
   marvel: IMarvel | undefined;
-  marvelItem: IMarvel;
+  marvelItem: IMarvel | null;
   marvelListData: IMarvel[] | unknown[];
   nextPage: () => void;
   previousPage: () => void;
   getMarvel: (input: string) => void;
   getMarvelData: () => void;
-  setMarvelItem: React.Dispatch<SetStateAction<IMarvel>>;
+  setMarvelItem: React.Dispatch<SetStateAction<IMarvel | null>>;
   getMarvelDetail: (name: string) => Promise<void>;
 }
 
@@ -23,6 +23,12 @@ export interface IMarvel {
   thumbnail: {
     extension: string;
     path: string;
+  };
+  series: {
+    available: number;
+  };
+  stories: {
+    available: number;
   };
 }
 

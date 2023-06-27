@@ -13,7 +13,7 @@
 	Figma
 </h3>
 
-### [`Figma`](https://www.figma.com/file/WYsQclXV1S05fQgCDm49T1/pokemon?node-id=0%3A1&t=bmHM0gX8gZA2RYR1-1)
+### [`Figma`](https://www.figma.com/file/qPNEU9AH92T67hYqkBcl8t/Marvel-Screen?type=design&node-id=0%3A1&mode=design&t=aljfZLcYLxWubuHQ-1)
 
 <h3 align = "center">
 	Deploy
