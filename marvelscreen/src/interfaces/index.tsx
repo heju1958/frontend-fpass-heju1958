@@ -1,15 +1,14 @@
 import { ReactNode, SetStateAction } from "react";
 
 export interface IMarvelContext {
-  marvel: IMarvel | undefined;
+  heroData: IMarvel[] | unknown[];
   marvelItem: IMarvel | null;
-  marvelListData: IMarvel[] | unknown[];
   nextPage: () => void;
   previousPage: () => void;
-  getMarvel: (input: string) => void;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
   getMarvelData: () => void;
-  setMarvelItem: React.Dispatch<SetStateAction<IMarvel | null>>;
   getMarvelDetail: (name: string) => Promise<void>;
+  setMarvelItem: React.Dispatch<SetStateAction<IMarvel | null>>;
 }
 
 export interface IMarvelProps {

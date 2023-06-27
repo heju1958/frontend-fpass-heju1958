@@ -1,12 +1,11 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { MarvelContext } from "../../contexts/marvelContext";
 
 import { ContainerHeader, ContainerSearch } from "./style";
 import searchIcon from "../../assets/search.svg";
 
 const Header = () => {
-  const [search, setSearch] = useState("");
-  const { getMarvel } = useContext(MarvelContext);
+  const { setSearch } = useContext(MarvelContext);
 
   return (
     <ContainerHeader>
@@ -16,7 +15,7 @@ const Header = () => {
           type="text"
           placeholder="Pesquise seu herói"
         />
-        <button onClick={() => getMarvel(search)}>
+        <button>
           <img src={searchIcon} alt="search icon" />
         </button>
       </ContainerSearch>

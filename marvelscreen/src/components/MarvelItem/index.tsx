@@ -1,5 +1,5 @@
-import { useContext, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { MarvelContext } from "../../contexts/marvelContext";
 import {
   ContainerMarvelName,
@@ -10,25 +10,7 @@ import { ContainerButton } from "../Buttons/style";
 
 const MarvelItem = () => {
   const navigate = useNavigate();
-  const { marvelItem, getMarvelDetail, setMarvelItem } =
-    useContext(MarvelContext);
-  const { name } = useParams();
-
-  useEffect(() => {
-    const storedMarvelItem = localStorage.getItem("marvelItem");
-
-    if (storedMarvelItem) {
-      setMarvelItem(JSON.parse(storedMarvelItem));
-    } else if (name) {
-      getMarvelDetail(name);
-    }
-  }, [name]);
-
-  useEffect(() => {
-    if (marvelItem) {
-      localStorage.setItem("marvelItem", JSON.stringify(marvelItem));
-    }
-  }, [marvelItem]);
+  const { marvelItem } = useContext(MarvelContext);
 
   return (
     <>

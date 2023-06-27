@@ -27,8 +27,9 @@ export const ContainerMarvelItem = styled.div`
   display: flex;
   padding: 3rem;
   align-items: center;
-  margin-top: 3rem;
+  margin-top: 2rem;
   justify-content: space-around;
+  gap: 2rem;
 
   img {
     width: 30rem;
@@ -39,8 +40,7 @@ export const ContainerMarvelItem = styled.div`
     padding: 1rem;
     margin-top: 1rem;
     img {
-      margin-bottom: 3rem;
-      width: 10rem;
+      width: 15rem;
     }
   }
 `;
