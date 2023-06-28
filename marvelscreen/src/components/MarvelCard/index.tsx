@@ -5,21 +5,21 @@ import { ContainerCard } from "./style";
 import { IMarvel } from "../../interfaces";
 
 const MarvelCard = () => {
-  const { getMarvelData, heroData } = useContext(MarvelContext);
+  const { marvelListData, getMarvelData } = useContext(MarvelContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     getMarvelData();
   }, []);
 
-  if (heroData.length === 0) {
+  if (marvelListData.length === 0) {
     return <h1>loading</h1>;
   }
 
   return (
     <>
       <ContainerCard>
-        {heroData?.map((marvel: IMarvel | any) => {
+        {marvelListData?.map((marvel: IMarvel | any) => {
           return (
             <li
               key={marvel.id}

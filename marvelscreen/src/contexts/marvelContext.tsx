@@ -2,7 +2,6 @@ import api from "../api";
 import { createContext, useState, useEffect } from "react";
 import { IMarvel, IMarvelContext, IMarvelProps } from "../interfaces";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 
 export const MarvelContext = createContext<IMarvelContext>(
   {} as IMarvelContext
@@ -16,12 +15,20 @@ export const MarvelProvider = ({ children }: IMarvelProps) => {
   const [search, setSearch] = useState<string>("");
   const { name } = useParams();
 
-  // hero data
+  const [queryParams, setQueryParams] = useState({});
 
-  const getMarvelData = async () => {
-    await api.get("").then((res) => {
-      setMarvelListData(res.data.data.results);
-    });
+  const getMarvelFilter = async (input: string) => {
+    await api
+      .get("", {
+        params: {
+          nameStartsWith: input.toLocaleLowerCase(),
+          limit: 6,
+        },
+      })
+      .then((res) => {
+        setMarvelListData(res.data.data.results);
+        setQueryParams(res.config.params);
+      });
   };
 
   const getMarvelDetail = async (name: string) => {
@@ -30,9 +37,18 @@ export const MarvelProvider = ({ children }: IMarvelProps) => {
     });
   };
 
-  const heroData = marvelListData?.filter((marvel: any) =>
-    marvel.name.toLowerCase().includes(search.toLocaleLowerCase())
-  );
+  const getMarvelData = async () => {
+    await api
+      .get("", {
+        params: {
+          limit: 6,
+        },
+      })
+      .then((res) => {
+        setMarvelListData(res.data.data.results);
+        setQueryParams(res.config.params);
+      });
+  };
 
   useEffect(() => {
     const storedMarvelItem = localStorage.getItem("marvelItem");
@@ -59,6 +75,7 @@ export const MarvelProvider = ({ children }: IMarvelProps) => {
       const res = await api.get("", {
         params: {
           offset: offset - 6,
+          ...queryParams,
         },
       });
       setMarvelListData(res.data.data.results);
@@ -70,6 +87,7 @@ export const MarvelProvider = ({ children }: IMarvelProps) => {
     const res = await api.get("", {
       params: {
         offset: offset + 6,
+        ...queryParams,
       },
     });
     setMarvelListData(res.data.data.results);
@@ -79,14 +97,16 @@ export const MarvelProvider = ({ children }: IMarvelProps) => {
   return (
     <MarvelContext.Provider
       value={{
+        marvelListData,
+        search,
         marvelItem,
-        heroData,
         setMarvelItem,
-        getMarvelData,
+        getMarvelFilter,
         getMarvelDetail,
         nextPage,
         previousPage,
         setSearch,
+        getMarvelData,
       }}
     >
       {children}
@@ -94,12 +114,5 @@ export const MarvelProvider = ({ children }: IMarvelProps) => {
   );
 };
 
-// const getMarvel = async (input: string) => {
-//   await api.get(`/${input.toLowerCase()}`).then((res) => {
-//     setMarvel(res.data.data.results);
-//   });
-// };
-
-// corrigir a busca de heroi
 // tentar nao salvar no localstorage
 // corrigir deploy
