@@ -2,6 +2,7 @@ import api from "../api";
 import { createContext, useState, useEffect } from "react";
 import { IMarvel, IMarvelContext, IMarvelProps } from "../interfaces";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 export const MarvelContext = createContext<IMarvelContext>(
   {} as IMarvelContext
@@ -98,3 +99,7 @@ export const MarvelProvider = ({ children }: IMarvelProps) => {
 //     setMarvel(res.data.data.results);
 //   });
 // };
+
+// corrigir a busca de heroi
+// tentar nao salvar no localstorage
+// corrigir deploy
