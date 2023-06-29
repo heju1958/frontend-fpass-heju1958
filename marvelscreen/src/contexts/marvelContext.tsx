@@ -1,7 +1,6 @@
 import api from "../api";
 import { createContext, useState, useEffect } from "react";
 import { IMarvel, IMarvelContext, IMarvelProps } from "../interfaces";
-import { useParams } from "react-router-dom";
 
 export const MarvelContext = createContext<IMarvelContext>(
   {} as IMarvelContext
@@ -13,8 +12,6 @@ export const MarvelProvider = ({ children }: IMarvelProps) => {
     [] as IMarvel[]
   );
   const [search, setSearch] = useState<string>("");
-  const { name } = useParams();
-
   const [queryParams, setQueryParams] = useState({});
 
   const getMarvelFilter = async (input: string) => {
@@ -32,9 +29,16 @@ export const MarvelProvider = ({ children }: IMarvelProps) => {
   };
 
   const getMarvelDetail = async (name: string) => {
-    await api.get(`/${name}`).then((res) => {
-      setMarvelItem(res.data.data.results);
-    });
+    await api
+      .get("", {
+        params: {
+          name: name,
+        },
+      })
+      .then((res) => {
+        setMarvelItem(res.data.data.results);
+        setQueryParams(res.config.params);
+      });
   };
 
   const getMarvelData = async () => {
@@ -49,22 +53,6 @@ export const MarvelProvider = ({ children }: IMarvelProps) => {
         setQueryParams(res.config.params);
       });
   };
-
-  useEffect(() => {
-    const storedMarvelItem = localStorage.getItem("marvelItem");
-
-    if (storedMarvelItem) {
-      setMarvelItem(JSON.parse(storedMarvelItem));
-    } else if (name) {
-      getMarvelDetail(name);
-    }
-  }, [name]);
-
-  useEffect(() => {
-    if (marvelItem) {
-      localStorage.setItem("marvelItem", JSON.stringify(marvelItem));
-    }
-  }, [marvelItem]);
 
   // pagination
 
@@ -116,3 +104,6 @@ export const MarvelProvider = ({ children }: IMarvelProps) => {
 
 // tentar nao salvar no localstorage
 // corrigir deploy
+
+// Interessados enviar currículo + desafio para: eduardo@fpass.com.br e edy.rodrigues@fpass.com.br com o titulo
+// "Vaga de desenvolvimento front-end React Pleno ou Sênior

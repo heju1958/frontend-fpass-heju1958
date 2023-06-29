@@ -5,7 +5,8 @@ import { ContainerCard } from "./style";
 import { IMarvel } from "../../interfaces";
 
 const MarvelCard = () => {
-  const { marvelListData, getMarvelData } = useContext(MarvelContext);
+  const { marvelListData, getMarvelData, setMarvelItem } =
+    useContext(MarvelContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,6 +26,7 @@ const MarvelCard = () => {
               key={marvel.id}
               onClick={() => {
                 navigate(`/marvelpage/${marvel.name}`);
+                setMarvelItem(marvel);
               }}
             >
               <div>

@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { MarvelContext } from "../../contexts/marvelContext";
 import {
   ContainerMarvelName,
@@ -10,7 +10,14 @@ import { ContainerButton } from "../Buttons/style";
 
 const MarvelItem = () => {
   const navigate = useNavigate();
-  const { marvelItem } = useContext(MarvelContext);
+  // const { name } = useParams();
+  const { marvelItem, getMarvelDetail } = useContext(MarvelContext);
+
+  // useEffect(() => {
+  //   if (name) {
+  //     getMarvelDetail(name);
+  //   }
+  // }, [marvelItem]);
 
   return (
     <>
