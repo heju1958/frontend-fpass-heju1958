@@ -91,9 +91,3 @@ export const MarvelProvider = ({ children }: IMarvelProps) => {
     </MarvelContext.Provider>
   );
 };
-
-// tentar nao salvar no localstorage
-// corrigir deploy
-
-// Interessados enviar currículo + desafio para: eduardo@fpass.com.br e edy.rodrigues@fpass.com.br com o titulo
-// "Vaga de desenvolvimento front-end React Pleno ou Sênior
