@@ -1,17 +1,12 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { MarvelContext } from "../../contexts/marvelContext";
 import { useNavigate } from "react-router-dom";
 import { ContainerCard } from "./style";
 import { IMarvel } from "../../interfaces";
 
 const MarvelCard = () => {
-  const { marvelListData, getMarvelData, setMarvelItem } =
-    useContext(MarvelContext);
+  const { marvelListData, setMarvelItem } = useContext(MarvelContext);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    getMarvelData();
-  }, []);
 
   if (marvelListData.length === 0) {
     return <h1>loading</h1>;

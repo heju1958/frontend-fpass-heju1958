@@ -28,19 +28,6 @@ export const MarvelProvider = ({ children }: IMarvelProps) => {
       });
   };
 
-  const getMarvelDetail = async (name: string) => {
-    await api
-      .get("", {
-        params: {
-          name: name,
-        },
-      })
-      .then((res) => {
-        setMarvelItem(res.data.data.results);
-        setQueryParams(res.config.params);
-      });
-  };
-
   const getMarvelData = async () => {
     await api
       .get("", {
@@ -53,6 +40,10 @@ export const MarvelProvider = ({ children }: IMarvelProps) => {
         setQueryParams(res.config.params);
       });
   };
+
+  useEffect(() => {
+    getMarvelData();
+  }, []);
 
   // pagination
 
@@ -90,7 +81,6 @@ export const MarvelProvider = ({ children }: IMarvelProps) => {
         marvelItem,
         setMarvelItem,
         getMarvelFilter,
-        getMarvelDetail,
         nextPage,
         previousPage,
         setSearch,

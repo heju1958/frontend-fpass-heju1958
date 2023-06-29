@@ -9,7 +9,6 @@ export interface IMarvelContext {
   setSearch: React.Dispatch<React.SetStateAction<string>>;
   getMarvelData: () => void;
   getMarvelFilter: (input: string) => void;
-  getMarvelDetail: (name: string) => Promise<void>;
   setMarvelItem: React.Dispatch<SetStateAction<IMarvel | null>>;
 }
 
